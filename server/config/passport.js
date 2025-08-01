@@ -1,5 +1,6 @@
 const passport = require("passport");
 const GoogleStrategy = require("passport-google-oauth20").Strategy;
+const User = require("../models/User");
 
 passport.use(
   new GoogleStrategy(
@@ -7,10 +8,29 @@ passport.use(
       clientID: process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
       callbackURL: "/auth/google/callback",
+      passReqToCallback: true,
     },
-    function (accessToken, refreshToken, profile, done) {
-      // Save the profile or user details here (in DB, for example)
-      return done(null, profile);
+    async function (req, accessToken, refreshToken, profile, done) {
+      try {
+        // Get role from session (set in /auth/google route)
+        const role = req.session.role || "student";
+        // Find or create user
+        let user = await User.findOne({ googleId: profile.id });
+        if (!user) {
+          user = await User.create({
+            googleId: profile.id,
+            name: profile.displayName,
+            email: profile.emails[0].value,
+            role,
+          });
+        } else if (user.role !== role) {
+          user.role = role;
+          await user.save();
+        }
+        return done(null, user);
+      } catch (err) {
+        return done(err, null);
+      }
     }
   )
 );

@@ -24,7 +24,7 @@ mongoose.connect(MONGO_URI).then(() => {
 });
 
 app.use(cors({
-  origin: "http://localhost:5000",
+  origin: "http://localhost:5173",
   credentials: true,
 }));
 
@@ -45,6 +45,3 @@ app.get("/", (req, res) => {
   res.send("Server is running...");
 });
 
-app.listen(PORT, () => {
-  console.log(`Server running at http://localhost:${PORT}`);
-});
