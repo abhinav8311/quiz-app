@@ -4,8 +4,7 @@ const userSchema = new mongoose.Schema({
   googleId: {
     type: String,
     required: false, // Only required for Google OAuth
-    unique: true,
-    sparse: true
+    unique: true
   },
   name: String,
   email: {

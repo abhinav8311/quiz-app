@@ -8,26 +8,10 @@ const TeacherLogin = () => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    try {
-      const res = await fetch('http://localhost:5000/auth/register/teacher', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(form),
-      });
-      const data = await res.json();
-      if (res.ok) {
-        alert('Registration successful!');
-        // Optionally redirect to login or dashboard
-      } else {
-        alert(data.error || 'Registration failed.');
-      }
-    } catch (err) {
-      alert('Server error.');
-    }
+    // TODO: Send form data to backend for manual registration
+    alert('Manual registration not implemented yet.');
   };
 
   return (
