@@ -1,8 +1,10 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Button, TextField, Divider, Box } from '@mui/material';
 
 const StudentLogin = () => {
   const [form, setForm] = useState({ name: '', email: '', password: '' });
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -20,8 +22,9 @@ const StudentLogin = () => {
       });
       const data = await res.json();
       if (res.ok) {
-        alert('Registration successful!');
-        // Optionally redirect to login or dashboard
+        // Save user info and force reload to dashboard
+        localStorage.setItem('user', JSON.stringify(data.user));
+        window.location.href = '/dashboard/student';
       } else {
         alert(data.error || 'Registration failed.');
       }
