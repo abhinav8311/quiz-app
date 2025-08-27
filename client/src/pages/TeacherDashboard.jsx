@@ -37,12 +37,12 @@ const TeacherDashboard = () => {
           ☰
         </button>
         {menuOpen && (
-          <ul className="menu-list">
-            <li>Quizzes</li>
-            <li>Scores</li>
-            <li>Ask AI</li>
-            <li onClick={handleLogout} style={{ color: "red", cursor: "pointer" }}>Log out</li>
-          </ul>
+          <div className="menu-list">
+            <button className="menu-btn">Quizzes</button>
+            <button className="menu-btn">Scores</button>
+            <button className="menu-btn">Ask AI</button>
+            <button className="menu-btn logout-btn" onClick={handleLogout}>Log out</button>
+          </div>
         )}
       </div>
 
@@ -96,14 +96,24 @@ const TeacherDashboard = () => {
         }
         .menu-list {
           margin-top: 2rem;
-          padding: 0;
+          display: flex;
+          flex-direction: column;
+          gap: 1rem;
         }
-        .menu-list li {
+        .menu-btn {
           background: #e5e5e5;
           color: #111;
           font-size: 1.1rem;
+          border: none;
+          border-radius: 6px;
+          padding: 0.7rem 1.2rem;
+          cursor: pointer;
+          transition: background 0.2s;
         }
-        .menu-list li:last-child {
+        .menu-btn:hover {
+          background: #d6ccc2;
+        }
+        .logout-btn {
           color: red;
         }
         .main-content {

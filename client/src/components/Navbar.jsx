@@ -21,7 +21,7 @@ const Navbar = () => {
             cursor: 'pointer',
           }}
         >
-          AQIverse
+          AIQverse
         </Typography>
         {user && (
           <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>

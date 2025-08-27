@@ -6,7 +6,7 @@ const LandingPage = () => {
 
   return (
     <Container sx={{ mt: 5, textAlign: 'center' }}>
-      <Typography variant="h4" gutterBottom>Welcome to AQIverse</Typography>
+      <Typography variant="h4" gutterBottom>Welcome to AIQverse</Typography>
       
        {/* LandingPage.jsx */}
       <Button
@@ -22,6 +22,13 @@ const LandingPage = () => {
         sx={{ m: 1 }}
       >
         I’M A STUDENT
+      </Button>
+      <Button
+        variant="text"
+        onClick={() => navigate('/login')}
+        sx={{ m: 2, color: '#646cff', fontWeight: 600 }}
+      >
+        Existing User? Login
       </Button>
 
     </Container>
