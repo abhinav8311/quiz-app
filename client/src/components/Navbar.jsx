@@ -12,13 +12,26 @@ const Navbar = () => {
       <Toolbar>
         <Typography
           variant="h6"
-          component={Link}
-          to="/"
           sx={{
             flexGrow: 1,
             color: 'inherit',
             textDecoration: 'none',
             cursor: 'pointer',
+            fontWeight: 900,
+            letterSpacing: 2,
+            fontSize: '2rem',
+            textShadow: '0 0 2px #3f3f3fff, 0 0 4px #696969ff',
+            WebkitTextStroke: '1.1px #f5f5f5',
+            padding: '0.2rem 0',
+          }}
+          onClick={() => {
+            if (user && user.role === "teacher") {
+              navigate("/dashboard/teacher");
+            } else if (user && user.role === "student") {
+              navigate("/dashboard/student");
+            } else {
+              navigate("/");
+            }
           }}
         >
           AIQverse

@@ -34,8 +34,8 @@ const TeacherLogin = () => {
   };
 
   return (
-    <Box sx={{ maxWidth: 400, mx: 'auto', mt: 5, p: 3, boxShadow: 2, borderRadius: 2 }}>
-      <h2>Teacher Registration</h2>
+    <Box sx={{ maxWidth: 400, mx: 'auto', mt: 5, p: 3, boxShadow: '0 4px 24px 0 rgba(100,108,255,0.15)', borderRadius: 3, background: '#fff' }}>
+      <h2 style={{ textAlign: 'center' }}>Teacher Registration</h2>
       <form onSubmit={handleSubmit}>
         <TextField
           label="Name"
