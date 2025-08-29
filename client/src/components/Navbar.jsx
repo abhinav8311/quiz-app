@@ -38,8 +38,7 @@ const Navbar = () => {
         </Typography>
         {user && (
           <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-            <span style={{ fontSize: '1rem', color: '#111' }}>Welcome,</span>
-            <span style={{ fontWeight: 600, color: '#111' }}>{user.name}</span>
+            <span style={{ fontSize: '1.25rem', fontWeight: 450, color: '#111' }}>Welcome</span>
             <span style={{
               width: 36,
               height: 36,
